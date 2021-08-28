@@ -38,7 +38,7 @@ body {
   background-size: cover;
   background-color: lightblue;
   min-height: 100vh;
-  overflow: not-hidden..yet;
+  /* overflow: not-hidden..yet; */
   color: var(--clr-light);
 }
 
@@ -225,4 +225,91 @@ a {
 
 :checked ~ .unit__toggle::after {
   margin-left: 3px;
+}
+
+.previous-weather {
+  background: var(--clr-light);
+  color: var(--clr-dark);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(50%);
+  transition: transform 350ms ease;
+  padding: 3rem;
+}
+
+.show-previous-weather {
+  position: absolute;
+  background: var(--clr-light);
+  left: 50%;
+  width: 10rem;
+  transform: translate(-50%, calc(-100% - 3rem));
+  text-align: center;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  cursor: pointer;
+  color: var(--clr-gray);
+  border: 0;
+  font-family: inherit;
+}
+
+.show-previous-weather:hover {
+  color: var(--clr-dark);
+}
+
+.show-previous-weather:focus {
+  color: var(--clr-dark);
+}
+
+.show-previous-weather span {
+  display: block;
+  transform: rotate(0);
+  transition: transform 300ms ease;
+}
+
+.previous-days {
+  display: flex;
+  justify-content: space-between;
+}
+
+.previous-day {
+  opacity: 0;
+  transition: opacity 350ms linear;
+}
+
+.previous-weather__title {
+  text-align: center;
+}
+
+.show-weather .previous-weather {
+  transform: translateY(0);
+  
+
+}
+
+.show-weather .previous-weather show-previous-weather span {
+  display: block;
+  transform: rotate(180deg);
+  translateY(-6px);
+}
+
+.show-weather.previous-weather previous-day {
+    animation: slideUpIn 750ms forwards;
+}
+
+.show-weather.previous-weather previous-weather__title {
+  text-align: left;
+}
+
+@keyframes slideUpIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: tranlateY(0);
+  }
 }
