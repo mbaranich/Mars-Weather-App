@@ -1,5 +1,9 @@
-const API_KEY = "eeKdiLcjHd55SSPr4Hqm7KVYxTrurrIZKr4aXbUW";
-const API_URL = `https://api.nasa.gov/insight_weather/?api_key=${API_KEY}&feedtype=json&ver=1.0`;
+if (process.env.NODE_ENV !== 'production'){
+	require('dotenv').config()
+}
+
+const API_KEY = process.env.API_KEY;
+const API_URL = process.env.API_URL;
 
 const previousWeatherToggle = document.querySelector(".show-previous-weather");
 const previousWeather = document.querySelector(".previous-weather");
